@@ -1,55 +1,93 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 
+TABLE_PATH = "outputs/tables/final_comparison.csv"
 FIG_DIR = "outputs/figures"
 os.makedirs(FIG_DIR, exist_ok=True)
 
-df = pd.read_csv(
-    "outputs/tables/final_comparison.csv"
-)
+df = pd.read_csv(TABLE_PATH)
 
-plt.figure(figsize=(10,7))
+# Daha okunur olması için sadece ana modelleri seçiyoruz
+selected_models = [
+    "XGBoost",
+    "XGBoost_NoSex",
+    "XGBoost_NoDemo",
+    "XGBoost_Reweighing",
+    "LogisticRegression_ExpGrad",
+    "LogisticRegression",
+    "LogisticRegression_Reweighing"
+]
 
-x = 1 - df["SPD"].abs()
-y = df["Accuracy"]
+df_plot = df[df["Model"].isin(selected_models)].copy()
+df_plot["Abs_SPD"] = df_plot["SPD"].abs()
 
-plt.scatter(
-    x,
-    y,
-    s=120
-)
+labels = {
+    "XGBoost": "XGBoost\nBest Accuracy",
+    "XGBoost_NoSex": "XGBoost\nNo-Sex",
+    "XGBoost_NoDemo": "XGBoost\nNo-Demo",
+    "XGBoost_Reweighing": "XGBoost +\nReweighing\nBest Balance",
+    "LogisticRegression_ExpGrad": "LR + ExpGrad\nBest Fairness",
+    "LogisticRegression": "LR Baseline",
+    "LogisticRegression_Reweighing": "LR +\nReweighing"
+}
 
-for _, row in df.iterrows():
+plt.figure(figsize=(11, 7))
 
-    plt.annotate(
-        row["Model"],
-        (
-            1 - abs(row["SPD"]),
-            row["Accuracy"]
-        ),
-        fontsize=8
+for _, row in df_plot.iterrows():
+    model = row["Model"]
+
+    if model == "XGBoost_Reweighing":
+        marker = "*"
+        size = 260
+    elif model == "LogisticRegression_ExpGrad":
+        marker = "D"
+        size = 150
+    elif model == "XGBoost":
+        marker = "o"
+        size = 130
+    else:
+        marker = "o"
+        size = 90
+
+    plt.scatter(
+        row["Accuracy"],
+        row["Abs_SPD"],
+        s=size,
+        marker=marker
     )
 
-plt.xlabel("Fairness Score (1 - |SPD|)")
-plt.ylabel("Accuracy")
+    plt.annotate(
+        labels.get(model, model),
+        (row["Accuracy"], row["Abs_SPD"]),
+        textcoords="offset points",
+        xytext=(8, 6),
+        fontsize=9
+    )
 
-plt.title(
-    "Accuracy-Fairness Trade-Off (Pareto Analysis)"
+plt.xlabel("Accuracy")
+plt.ylabel("|Statistical Parity Difference|")
+plt.title("Accuracy–Fairness Trade-off Analysis")
+
+plt.axhline(
+    y=0.10,
+    linestyle="--",
+    linewidth=1
 )
 
-plt.grid(True)
-
-save_path = (
-    f"{FIG_DIR}/pareto_frontier.png"
+plt.text(
+    df_plot["Accuracy"].min(),
+    0.103,
+    "Lower SPD = Fairer",
+    fontsize=9
 )
 
-plt.savefig(
-    save_path,
-    dpi=300,
-    bbox_inches="tight"
-)
+plt.grid(True, alpha=0.4)
 
+plt.tight_layout()
+
+save_path = f"{FIG_DIR}/accuracy_spd_tradeoff_clean.png"
+plt.savefig(save_path, dpi=300, bbox_inches="tight")
 plt.show()
 
 print("Saved:", save_path)
