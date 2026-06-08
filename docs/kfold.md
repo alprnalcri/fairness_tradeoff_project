@@ -10,13 +10,13 @@ This section evaluates model stability across different data splits.
 
 ## XGBoost Stability
 
-![KFold Summary](assets/images/kfold_xgboost_summary.png)
+![KFold Summary](assets/tables/kfold_xgboost_summary.csv)
 
 ---
 
 ## Fairness Stability
 
-![Fairness Summary](assets/images/kfold_fairness_summary.png)
+![Fairness Summary](assets/tables/kfold_fairness_summary.csv)
 
 ---
 

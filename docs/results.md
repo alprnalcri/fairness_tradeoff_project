@@ -74,7 +74,7 @@ The best overall trade-off is achieved by **XGBoost + Reweighing**, which mainta
 
 ## Final Model Comparison
 
-![Final Comparison](assets/images/final_comparison.png)
+![Final Comparison](assets/tables/final_comparison.csv)
 
 ---
 
