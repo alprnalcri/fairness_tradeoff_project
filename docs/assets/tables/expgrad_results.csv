@@ -1,0 +1,2 @@
+Experiment,Model,Accuracy,Precision,Recall,F1,ROC_AUC,SPD,EOD,DI,Female_Selection_Rate,Male_Selection_Rate,Female_TPR,Male_TPR,Female_FPR,Male_FPR
+ExpGrad,LogisticRegression_ExpGrad,0.8409,0.7523,0.5379,0.6273,0.745,0.0133,0.3096,0.9272,0.169,0.1823,0.8018,0.4922,0.0867,0.0418

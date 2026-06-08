@@ -1,0 +1,4 @@
+Experiment,Model,Accuracy,Precision,Recall,F1,ROC_AUC,SPD,EOD,DI,Female_Selection_Rate,Male_Selection_Rate,Female_TPR,Male_TPR,Female_FPR,Male_FPR
+Reweighing,LogisticRegression_Reweighing,0.8493,0.7523,0.5885,0.6604,0.9105,0.0821,0.1657,0.6286,0.1389,0.221,0.7297,0.5641,0.0621,0.0655
+Reweighing,RandomForest_Reweighing,0.8555,0.7401,0.6465,0.6901,0.9092,0.1833,0.0767,0.3361,0.0928,0.2761,0.5811,0.6578,0.0293,0.103
+Reweighing,XGBoost_Reweighing,0.8707,0.8044,0.6352,0.7098,0.9314,0.0893,0.1586,0.6033,0.1358,0.2251,0.7703,0.6117,0.0533,0.0499

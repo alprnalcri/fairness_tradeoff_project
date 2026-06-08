@@ -1,48 +1,119 @@
+---
+title: "Methodology"
+---
+
 # Methodology
+
+This section describes the dataset, preprocessing pipeline, machine learning models, fairness evaluation metrics, and experimental design used in this study.
+
+---
 
 ## Dataset
 
-The Adult Census Income dataset from the UCI Machine Learning Repository was used. The prediction task involves determining whether an individual's annual income exceeds $50,000.
+The **Adult Census Income dataset** from the UCI Machine Learning Repository is used in this study.
 
-Protected attribute:
+The task is formulated as a binary classification problem:
 
-* Sex (Female/Male)
+- Income ≤ 50K
+- Income > 50K
+
+### Protected Attribute
+
+- Sex (Male / Female)
+
+This attribute is used to evaluate group fairness across demographic groups.
+
+---
+
+## Data Preprocessing
+
+The dataset undergoes the following preprocessing steps:
+
+- Removal of missing or unknown values (e.g., "?")
+- One-Hot Encoding for categorical variables
+- Standardization of numerical features using StandardScaler
+- Stratified splitting into training and test sets (80% / 20%)
+
+These steps ensure that the model receives clean and normalized input while preserving class distribution.
+
+---
 
 ## Baseline Models
 
-The following machine learning models were evaluated:
+The following machine learning models are used for baseline comparison:
 
-* Logistic Regression
-* Decision Tree
-* Random Forest
-* XGBoost
+- Logistic Regression (interpretable linear model)
+- Decision Tree (rule-based model)
+- Random Forest (ensemble bagging method)
+- XGBoost (gradient boosting model)
+
+These models represent a spectrum from simple to complex learning approaches.
+
+---
 
 ## Fairness Metrics
 
-To assess group fairness, the following metrics were employed:
+To evaluate group fairness, the following metrics are used:
 
-* Statistical Parity Difference (SPD)
-* Equal Opportunity Difference (EOD)
-* Disparate Impact (DI)
+### Statistical Parity Difference (SPD)
+Measures the difference in positive prediction rates between protected and unprotected groups.
+
+### Equal Opportunity Difference (EOD)
+Measures the difference in true positive rates across groups.
+
+### Disparate Impact (DI)
+Measures the ratio of positive prediction rates between groups.
+
+These metrics are widely used in algorithmic fairness literature to quantify group-level bias.
+
+---
 
 ## Fairness Interventions
 
-### No-Sex
+To mitigate bias, both preprocessing and in-processing methods are applied.
 
-The protected attribute was removed from the feature set.
+### No-Sex
+The protected attribute (sex) is removed from the dataset to evaluate fairness-through-unawareness.
 
 ### No-Demographic
+Multiple correlated demographic features are removed:
 
-Multiple demographic variables were removed, including sex, race, marital status, relationship status, and native country.
+- sex
+- race
+- marital-status
+- relationship
+- native-country
+
+This setup tests whether removing sensitive attributes is sufficient to reduce bias.
 
 ### Reweighing
+A preprocessing technique that assigns weights to training instances to balance representation across groups.
 
-Training samples were assigned weights to reduce bias before model training.
+### Exponentiated Gradient Reduction (ExpGrad)
+An in-processing method implemented via Fairlearn that enforces fairness constraints during model optimization.
 
-### Exponentiated Gradient Reduction
+---
 
-Fairness constraints were incorporated directly into the optimization process using Fairlearn.
+## Experimental Design
+
+The study follows a structured experimental pipeline:
+
+1. Baseline training using all features
+2. Feature removal experiments (No-Sex, No-Demographic)
+3. Preprocessing-based mitigation (Reweighing)
+4. In-processing fairness optimization (ExpGrad)
+
+This design enables a comparative analysis of fairness interventions.
+
+---
 
 ## Validation Strategy
 
-A 5-Fold Stratified Cross Validation procedure was performed to evaluate the robustness of the obtained results.
+A **5-Fold Stratified Cross Validation** approach is used to ensure robustness.
+
+- Dataset is split into 5 folds
+- Each fold is used once as test set
+- Remaining folds are used for training
+- Mean and standard deviation of metrics are reported
+
+This ensures that results are not dependent on a single train-test split.
