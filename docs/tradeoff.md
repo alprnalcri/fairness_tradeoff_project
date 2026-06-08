@@ -1,10 +1,12 @@
 ---
-title: "Accuracy–Fairness Trade-off"
----
+
+layout: default
+title: Accuracy–Fairness Trade-off
+----------------------------------
 
 # Accuracy–Fairness Trade-off
 
-This page presents the relationship between predictive performance and fairness.
+This section analyzes the relationship between predictive performance and fairness.
 
 ---
 
@@ -16,12 +18,12 @@ This page presents the relationship between predictive performance and fairness.
 
 ## Interpretation
 
-- Higher accuracy models (e.g., XGBoost) tend to exhibit higher demographic disparity.
-- Fairness-aware methods reduce bias but introduce performance trade-offs.
-- No single model achieves both maximum accuracy and maximum fairness.
+* Models with higher accuracy (e.g., XGBoost) tend to exhibit higher demographic disparity.
+* Fairness-aware methods reduce bias but may slightly reduce predictive performance.
+* No model achieves both maximum accuracy and maximum fairness simultaneously.
 
 ---
 
-## Key Conclusion
+## Key Insight
 
-This visualization confirms that fairness and accuracy are inherently competing objectives in machine learning systems.
+This result confirms that fairness and accuracy are inherently competing objectives in machine learning systems.

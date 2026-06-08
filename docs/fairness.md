@@ -1,5 +1,6 @@
 ---
-title: "Fairness Analysis"
+layout: default
+title: Fairness Analysis
 ---
 
 # Fairness Analysis
@@ -8,23 +9,21 @@ This section presents demographic bias patterns observed in the Adult Census Inc
 
 ---
 
-## Gender-Based Income Distribution
+## Gender-Based Analysis
 
 ![Gender Distribution](assets/images/gender_distribution.png)
-
----
 
 ![Income by Gender](assets/images/income_by_gender.png)
 
 ---
 
-## Race-Based Income Distribution
+## Race-Based Analysis
 
 ![Income by Race](assets/images/income_by_race.png)
 
 ---
 
-## Age vs Income Relationship
+## Age-Based Analysis
 
 ![Income by Age](assets/images/income_by_age.png)
 
@@ -32,6 +31,6 @@ This section presents demographic bias patterns observed in the Adult Census Inc
 
 ## Key Insight
 
-The dataset shows strong demographic disparities in income distribution, which indicates the presence of historical and structural bias.
+The dataset exhibits strong demographic disparities, indicating the presence of structural and historical bias.
 
-These biases directly affect model learning behavior and contribute to algorithmic unfairness.
+These biases directly influence model behavior and contribute to algorithmic unfairness.

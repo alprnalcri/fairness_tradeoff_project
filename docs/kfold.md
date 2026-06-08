@@ -1,33 +1,42 @@
 ---
-title: "Cross-Validation Analysis"
+layout: default
+title: Cross-Validation Analysis
 ---
 
-# Cross-Validation Results
+# Cross-Validation Analysis
 
-This section evaluates model stability across different data splits.
+This section evaluates model stability across different data splits using 5-Fold Stratified Cross Validation.
 
 ---
 
 ## XGBoost Stability
 
-![KFold Summary](assets/tables/kfold_xgboost_summary.csv)
+| Metric | Mean ± Std |
+|--------|------------|
+| Accuracy | 0.8705 ± 0.0025 |
+| SPD | 0.1890 ± 0.0075 |
+| DI | 0.3070 ± 0.0249 |
 
 ---
 
-## Fairness Stability
+## Fairness Stability (Reweighing)
 
-![Fairness Summary](assets/tables/kfold_fairness_summary.csv)
+| Metric | Mean ± Std |
+|--------|------------|
+| Accuracy | 0.8649 ± 0.0042 |
+| SPD | 0.1074 ± 0.0128 |
+| DI | 0.5391 ± 0.0462 |
 
 ---
 
 ## Key Findings
 
-- XGBoost shows stable performance across folds.
-- Fairness metrics remain consistent under cross-validation.
-- Reweighing improves fairness without destabilizing the model.
+- XGBoost is stable across different folds
+- Fairness metrics remain consistent
+- Reweighing improves fairness without instability
 
 ---
 
-## Conclusion
+## Key Insight
 
-The results confirm that both performance and fairness improvements are not dependent on a single train-test split.
+Results confirm that fairness improvements are robust and not dependent on a single train-test split.

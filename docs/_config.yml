@@ -2,33 +2,29 @@ title: "The Price of Fairness in Algorithmic Decision-Making"
 description: "A machine learning study on the trade-off between predictive performance and algorithmic fairness using the Adult Census Income dataset."
 
 theme: minima
-
 markdown: kramdown
 
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
+
+* jekyll-feed
+* jekyll-seo-tag
+
+lang: en
+
+author: "Alperen ALAÇERİ"
+email: "[250708029@samsun.edu.tr](mailto:250708029@samsun.edu.tr)"
 
 header_pages:
-  - index.md
-  - literature.md
-  - methodology.md
-  - results.md
-  - fairness.md
-  - tradeoff.md
-  - kfold.md
-  - conclusion.md
+
+* literature.md
+* methodology.md
+* results.md
+* fairness.md
+* tradeoff.md
+* kfold.md
+* conclusion.md
 
 show_excerpts: false
 
 minima:
-  skin: classic
-
-author: "Alperen ALAÇERİ"
-email: "250708029@samsun.edu.tr"
-
-github:
-  is_project_page: true
-
-# SEO improvement
-lang: en
+skin: classic
