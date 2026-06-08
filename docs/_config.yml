@@ -3,8 +3,7 @@ description: "Exploring the trade-off between predictive performance and fairnes
 theme: minima
 
 header_pages:
-
-* literature.md
-* methodology.md
-* results.md
-* conclusion.md
+  - literature.md
+  - methodology.md
+  - results.md
+  - conclusion.md
