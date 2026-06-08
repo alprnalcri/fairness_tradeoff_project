@@ -1,0 +1,10 @@
+title: "The Price of Fairness in Algorithmic Decision-Making"
+description: "Exploring the trade-off between predictive performance and fairness in machine learning."
+theme: minima
+
+header_pages:
+
+* literature.md
+* methodology.md
+* results.md
+* conclusion.md
