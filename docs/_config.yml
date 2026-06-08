@@ -1,5 +1,5 @@
 title: "The Price of Fairness in Algorithmic Decision-Making"
-description: "A comparative machine learning study on the trade-off between predictive performance and algorithmic fairness using the Adult Census Income dataset."
+description: "A machine learning study on the trade-off between predictive performance and algorithmic fairness using the Adult Census Income dataset."
 
 theme: minima
 
@@ -24,10 +24,11 @@ show_excerpts: false
 minima:
   skin: classic
 
-# SEO polish
 author: "Alperen ALAÇERİ"
 email: "250708029@samsun.edu.tr"
 
-# GitHub Pages friendly
 github:
   is_project_page: true
+
+# SEO improvement
+lang: en
